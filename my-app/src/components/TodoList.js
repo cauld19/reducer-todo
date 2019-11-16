@@ -2,20 +2,24 @@ import React from "react"
 
 import Todo from "./Todo"
 
-const TodoList = ({state, removeTodo}) => {
-    return (
+const TodoList = ({state, removeTodo, toggleTodo, clearTodo}) => {
+    return (<>
         <div className="todo-outer-div">
-            {/* <Todo state={state}/> */}
             {state.todos.map(todo =>(
                 <Todo 
                   key={todo.id}
+                  todoCompleted={todo.completed}
                   todo={todo.item}
                   id={todo.id}
                   removeTodo={removeTodo}
+                  toggleTodo={toggleTodo}
+                  clearTodo={clearTodo}
                 />
             ))}
-            {/* <button onClick={props.clearTodos}>Clear Todos</button> */}
+            
         </div> 
+        
+        </>
       );
 }
 

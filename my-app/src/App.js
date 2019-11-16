@@ -10,9 +10,15 @@ import './App.css';
 function App() {
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState("");
 
-  console.log(todo, state)
+
+
+  const toggleTodo = todoId => {
+    dispatch({type: "TOGGLE_TODO", payload: todoId})
+
+    
+  }
 
   const removeTodo = todoId => {
     dispatch({type: "REMOVE_TODO", payload: todoId})
@@ -31,12 +37,16 @@ function App() {
     setTodo("")
   }
 
+  const clearTodo = () => {
+    dispatch({ type: "CLEAR_TODOS"})
+    console.log("clicked");
+  }
 
 
   return (
     <div className="App">
-      <TodoList state={state} removeTodo={removeTodo}/>
-      <TodoForm todo={todo} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <TodoList state={state} removeTodo={removeTodo}  toggleTodo={toggleTodo} />
+      <TodoForm todo={todo} handleChange={handleChange} handleSubmit={handleSubmit} clearTodo={clearTodo}/>
     </div>
   );
 }

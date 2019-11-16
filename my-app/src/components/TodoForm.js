@@ -1,6 +1,8 @@
 import React from "react";
 
 const TodoForm = props => {
+
+    
     
 
         return (
@@ -14,6 +16,7 @@ const TodoForm = props => {
                     />
                     <button>Add Todo</button> 
                 </form>
+                <button onClick={props.clearTodo}>Clear Todos</button>
             </div>
                 
         )
