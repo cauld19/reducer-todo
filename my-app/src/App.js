@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useReducer} from 'react';
+import { initialState, todoReducer } from "./reducers/reducer";
+
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm"
+
 import './App.css';
 
+
 function App() {
+
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [todo, setTodo] = useState();
+
+  console.log(todo, state)
+
+  const removeTodo = todoId => {
+    dispatch({type: "REMOVE_TODO", payload: todoId})
+    console.log("remove", todo)
+  }
+
+
+  const handleChange = e => {
+    setTodo(e.target.value)
+  }
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch({ type: "ADD_TODO", payload: todo});
+    setTodo("")
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoList state={state} removeTodo={removeTodo}/>
+      <TodoForm todo={todo} handleChange={handleChange} handleSubmit={handleSubmit}/>
     </div>
   );
 }
