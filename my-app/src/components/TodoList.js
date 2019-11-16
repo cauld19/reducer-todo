@@ -2,7 +2,7 @@ import React from "react"
 
 import Todo from "./Todo"
 
-const TodoList = ({state, removeTodo, toggleTodo, clearTodo}) => {
+const TodoList = ({state, removeTodo, toggleTodo}) => {
     return (<>
         <div className="todo-outer-div">
             {state.todos.map(todo =>(
@@ -13,7 +13,6 @@ const TodoList = ({state, removeTodo, toggleTodo, clearTodo}) => {
                   id={todo.id}
                   removeTodo={removeTodo}
                   toggleTodo={toggleTodo}
-                  clearTodo={clearTodo}
                 />
             ))}
             
