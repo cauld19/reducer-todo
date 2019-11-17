@@ -13,6 +13,7 @@ const TodoList = ({state, removeTodo, toggleTodo}) => {
                   id={todo.id}
                   removeTodo={removeTodo}
                   toggleTodo={toggleTodo}
+                  completedTime={todo.completedTime}
                 />
             ))}
             

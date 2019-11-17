@@ -1,9 +1,12 @@
+import moment from 'moment';
+
 export const initialState = {
     todos: [
         {
             item: 'Check for spelling errors',
             completed: false,
-            id: 1
+            id: 1,
+            completedTime: ""
         }
     ]
 }
@@ -16,7 +19,8 @@ export const todoReducer = (state, action) => {
                     {
                         item: action.payload,
                         id: Date.now(),
-                        completed: false
+                        completed: false,
+                        completedTime: ""
                     },
                     ...state.todos
                 ]
@@ -35,7 +39,8 @@ export const todoReducer = (state, action) => {
                         if (todo.id === action.payload) {
                             return {
                                 ...todo,
-                                completed: !todo.completed
+                                completed: !todo.completed,
+                                completedTime: moment(new Date()).format("YYYY-MM-DD, h:mm:ss a")
                             }
                         }
                         return todo;

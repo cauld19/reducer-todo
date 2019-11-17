@@ -1,8 +1,9 @@
 import React from "react";
 
+
 const TodoForm = ({handleChange, handleSubmit, clearTodo, todo}) => {
 
-    
+
     
 
         return (

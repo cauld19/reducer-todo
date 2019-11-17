@@ -5,3 +5,8 @@
 .todo.completed {
   text-decoration: line-through;
 }
+
+
+.completed-todo-time {
+  text-decoration: none;
+}
